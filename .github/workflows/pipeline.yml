@@ -26,3 +26,11 @@ jobs:
 
       - name: Build imagen Docker
         run: docker build -t products-api .
+
+      - name: Instalar Railway CLI
+        run: npm install -g @railway/cli
+
+      - name: Deploy a Railway
+        run: railway up --service products-api
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
